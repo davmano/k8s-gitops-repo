@@ -33,7 +33,7 @@ jobs:
         docker build -t $IMAGE_NAME:${SHORT_SHA} -t $IMAGE_NAME:latest .
 
     - name: Scan with Trivy
-      uses: aquasecurity/trivy-action@v0.12.0
+      uses: aquasecurity/trivy-action@0.14.0
       with:
         image-ref: ${{ env.IMAGE_NAME }}:${{ env.SHORT_SHA }}
         severity: CRITICAL,HIGH
