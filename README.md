@@ -103,7 +103,7 @@ Then open http://localhost:3000
     Prometheus & Grafana
 
     Trivy (security scanning)
-
+push 
 ✏ Author
 
 David Mano
