@@ -1,2 +1,4 @@
 CVE-2023-45853
 
+- name: Debug list files
+  run: ls -la
