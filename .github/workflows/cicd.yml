@@ -40,7 +40,7 @@ jobs:
         entrypoint: trivy
         scan-type: image
         args: |
-          a image
+          image
           --severity CRITICAL,HIGH
           --exit-code 1
           --vuln-type os,library
