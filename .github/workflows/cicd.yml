@@ -32,13 +32,16 @@ jobs:
       run: |
         docker build -t $IMAGE_NAME:${SHORT_SHA} -t $IMAGE_NAME:latest .
 
-    - name: Scan with Trivy
+    - name: Scan with Trivy (manual)
       uses: aquasecurity/trivy-action@0.14.0
       with:
-        image-ref: ${{ env.IMAGE_NAME }}:${{ env.SHORT_SHA }}
-        severity: CRITICAL,HIGH
-        exit-code: 1
-        trivyignores: .trivyignore
+        scan-type: image
+        args: |
+          --severity CRITICAL,HIGH \
+          --exit-code 1 \
+          --vuln-type os,library \
+          --ignorefile .trivyignore \
+          ${{ env.IMAGE_NAME }}:${{ env.SHORT_SHA }}
 
     - name: Push both tags to Docker Hub
       run: |
