@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: hello-container
-          image: davmano/flask-app_sm:1b9681c
+          image: davmano/flask-app_sm:121028e
           ports:
             - containerPort: 5000
           env:
