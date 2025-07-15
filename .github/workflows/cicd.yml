@@ -3,6 +3,8 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'gitops/**'
 
 env:
   IMAGE_NAME: davmano/flask-app_sm
