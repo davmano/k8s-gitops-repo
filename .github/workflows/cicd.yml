@@ -55,8 +55,8 @@ jobs:
 
     - name: Update image tag in deployment.yaml
       run: |
-        cd gitops/apps/flask-app
-        sed -i "s|\(image: davmano/flask-aws_sm:\).*|\1${{ env.SHORT_SHA }}|" deployment.yaml
+        cd gitops/k8s
+        sed -i "s|\(image: davmano/flask-app_sm:\).*|\1${{ env.SHORT_SHA }}|" deployment.yaml
 
     - name: Commit and push to GitOps repo
       run: |
