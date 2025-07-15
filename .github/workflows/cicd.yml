@@ -38,7 +38,6 @@ jobs:
       uses: aquasecurity/trivy-action@0.14.0
       with:
         entryPoint: trivy
-        scan-type: image
         args: |
           image
           --severity CRITICAL,HIGH
