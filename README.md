@@ -103,7 +103,81 @@ Then open http://localhost:3000
     Prometheus & Grafana
 
     Trivy (security scanning)
-push 
+## CI/CD Pipeline
+
+┌─────────────────────────────┐
+│      Start Pipeline         │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│ Checkout app repo           │
+│ (clone your Flask app code) │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│ Set up Docker Buildx        │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│ Log in to Docker Hub        │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│ Extract short SHA           │
+│ (for version tagging)       │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│ Debug list files            │
+│ (check .trivyignore exists) │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│ Build Docker image          │
+│ (tagged with short SHA &    │
+│ also as latest)             │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│ Scan image with Trivy       │
+│ (fail if critical/high)     │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│ Push Docker image tags      │
+│ to Docker Hub               │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│ Clone GitOps repo           │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│ Update image tag in         │
+│ deployment.yaml             │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│ Commit & push to GitOps     │
+│ repo (trigger ArgoCD sync)  │
+└────────────┬────────────────┘
+             │
+             ▼
+┌─────────────────────────────┐
+│           Done!             │
+└─────────────────────────────┘
+
 ✏ Author
 
 David Mano
