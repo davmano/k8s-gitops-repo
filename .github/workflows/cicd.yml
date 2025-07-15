@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 env:
-  IMAGE_NAME: davmano/flask-aws_sm
+  IMAGE_NAME: davmano/flask-app_sm
 
 jobs:
   build-scan-push-update-gitops:
