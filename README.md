@@ -31,9 +31,9 @@ k8s-gitops-repo/
 
     Monitoring stack: Prometheus & Grafana (via Helm)
 
-🚀 How it works (real-world GitOps flow)
+## 🚀 How it works (real-world GitOps flow)
 
-1️⃣ Push code to your app repo → GitHub Actions:
+> 1️⃣ Push code to your app repo → GitHub Actions:
 
     Builds & tags Docker image with commit SHA
 
