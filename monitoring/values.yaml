@@ -1,0 +1,7 @@
+grafana:
+  adminPassword: "securepassword"
+  service:
+    type: LoadBalancer   # or NodePort / ClusterIP + ingress
+prometheus:
+  service:
+    type: ClusterIP
